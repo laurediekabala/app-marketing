@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  api_flask:
+    build: ./API_Flask
+    container_name: api_flask
+    ports:
+      - "5000:5000"
+    networks:
+      - marketune_network
+
+  app_marketing:
+    build: .
+    container_name: app_marketing
+    ports:
+      - "8050:8050"
+    depends_on:
+      - api_flask
+    networks:
+      - marketune_network
+
+networks:
+  marketune_network:
+    driver: bridge
