@@ -1,0 +1,20 @@
+# Étape 1 : image Python de base
+FROM python:3.11.5-slim
+
+# Étape 2 : définir le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Étape 3 : copier le fichier des dépendances
+COPY requirements_api.txt .
+
+# Étape 4 : installer les dépendances
+RUN pip install --no-cache-dir -r requirements_api.txt
+
+# Étape 5 : copier le reste du code (api.py, etc.)
+COPY . .
+
+# Étape 6 : exposer le port de l'API Flask
+EXPOSE 5000
+
+# Étape 7 : définir la commande pour exécuter Flask
+CMD ["python", "api.py"]
