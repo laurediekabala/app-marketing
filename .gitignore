@@ -1,0 +1,52 @@
+# ------------------------
+# Python
+# ------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyd
+
+# Environnements virtuels
+env/
+asenv_py/
+venv/
+ENV/
+.env/
+.venv/
+
+# Fichiers pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ------------------------
+# Dash / Flask / IDE
+# ------------------------
+instance/
+
+*.sqlite3
+
+# Fichiers temporaires
+*.log
+*.pot
+*.mo
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+*.idea/
+.vscode/
+.DS_Store
+
+# ------------------------
+# Docker
+# ------------------------
+*.tar
+*.img
+docker-compose.override.yml
+
+# Ignore les fichiers secrets
+*.env
+*.key
+*.pem
