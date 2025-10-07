@@ -1,0 +1,24 @@
+/* assets/styles.css */
+
+/* Style de base pour une police professionnelle */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Amélioration des liens de navigation dans la sidebar */
+.nav-pills .nav-link {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #0d6efd; /* Couleur primaire de Bootstrap */
+    color: white;
+}
+
+/* Style pour le switch de thème */
+.form-switch .form-check-input {
+    cursor: pointer;
+}
