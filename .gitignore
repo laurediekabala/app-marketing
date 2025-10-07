@@ -15,6 +15,7 @@ venv/
 ENV/
 .env/
 .venv/
+myenv_311/
 
 # Fichiers pip
 pip-log.txt
