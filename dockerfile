@@ -2,13 +2,12 @@ FROM python:3.11.5-slim
 
 WORKDIR /app
 
-# Copie tout le contenu du dossier Marketune
-COPY . /app
+# Copier les fichiers du projet
+COPY . .
 
-# Installation des dépendances Dash
-RUN pip install --upgrade pip
-RUN pip install -r requirements_dash.txt
+# Copier ton dataset dans le conteneur
+COPY data/ /app/data/
 
-EXPOSE 8050
+RUN pip install -r requirements.txt
 
-CMD ["python", "index.py"]
+CMD ["python", "api.py"]
