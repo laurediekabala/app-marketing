@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 # Copier ton dataset dans le conteneur
-COPY data/ /app/data/
+COPY dataset/ /app/data/
 
 RUN pip install -r requirements.txt
 
