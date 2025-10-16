@@ -10,4 +10,4 @@ COPY dataset/ /app/dataset/
 
 RUN pip install -r requirements_dash.txt
 
-CMD ["python", "api.py"]
+CMD ["python", "index.py"]
