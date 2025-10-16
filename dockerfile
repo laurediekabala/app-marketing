@@ -10,4 +10,7 @@ COPY dataset/ /app/dataset/
 
 RUN pip install -r requirements_dash.txt
 
+# Exposer le port Dash
+EXPOSE 8050
+
 CMD ["python", "index.py"]
