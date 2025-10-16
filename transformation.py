@@ -7,10 +7,9 @@ def categorie_age(age) :
     elif (age >48) :
         return ">48 ans"
 def dataset() :
-    data= pd.read_csv("dataset\bank-full.csv", sep=';')
-    data["cate_age"] =data["age"].map(categorie_age)
-
-    return data
+   data = pd.read_csv('/app/dataset/bank-full.csv')
+   data["cate_age"] =data["age"].map(categorie_age)
+   return data
 def type_col()  : 
     data= dataset()
     numerical_cols = data.select_dtypes(include=['int64', 'float64']).columns.tolist()
