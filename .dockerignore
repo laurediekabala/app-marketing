@@ -36,3 +36,7 @@ Dockerfile*
 LICENSE
 tests/
 docs/
+#outres
+*.csv
+*.xlsx
+*.zip
