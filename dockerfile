@@ -6,8 +6,8 @@ WORKDIR /app
 COPY . .
 
 # Copier ton dataset dans le conteneur
-COPY dataset/ /app/data/
+COPY dataset/ /app/dataset/
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements_dash.txt
 
 CMD ["python", "api.py"]
