@@ -6,3 +6,5 @@ dash_bootstrap_components
 dash_iconify
 flask_login
 requests
+supabase
+python-dotenv

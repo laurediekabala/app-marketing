@@ -8,7 +8,7 @@ import json
 import plotly.graph_objects as go
 
 # URL de votre API Flask (à adapter)
-FLASK_API_URL = "http://api_flask:5000/predict"
+FLASK_API_URL = "http://localhost:5000/predict"
 # Exemple de formulaire basé sur les colonnes du dataset
 # Dans une vraie application, cela pourrait être plus dynamique
 JOB_OPTIONS = ['admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 

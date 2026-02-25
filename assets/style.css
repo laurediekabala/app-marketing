@@ -5,20 +5,95 @@ body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
 }
 
 /* Amélioration des liens de navigation dans la sidebar */
 .nav-pills .nav-link {
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: #0d6efd; /* Couleur primaire de Bootstrap */
-    color: white;
+    background-color: #0d6efd !important;
+    color: white !important;
+    transform: translateX(4px);
+}
+
+.nav-pills .nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    transform: translateX(2px);
 }
 
 /* Style pour le switch de thème */
 .form-switch .form-check-input {
     cursor: pointer;
+}
+
+/* Flexbox pour la sidebar */
+#sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Assurer que la zone de navigation prend l'espace disponible */
+.flex-grow-1 {
+    flex: 1 !important;
+}
+
+/* Assurer que les éléments du bas restent en bas */
+.mt-auto {
+    margin-top: auto !important;
+}
+
+/* Style pour les cartes */
+.card {
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+/* Transitions fluides pour tous les éléments */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/* Ajoutez à la fin de styles.css : */
+
+/* Styles pour assurer la stabilité du thème */
+#sidebar, #page-content {
+    transition: background-color 0.3s ease !important;
+}
+
+/* Éviter les clignotements */
+.theme-switching * {
+    transition: none !important;
+}
+
+/* Style pour le switch de thème */
+.form-switch .form-check-input:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }

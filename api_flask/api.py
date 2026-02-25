@@ -14,7 +14,8 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 # Chargement du modèle
-MODEL_PATH =  os.path.join(os.getcwd(), "xboost.joblib")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH =  os.path.join(BASE_DIR, "xboost.joblib")
 THRESHOLD = 0.45
 
 def get_feature_names_from_pipeline(pipeline, input_data):

@@ -1,117 +1,194 @@
-# 🚀 Marketune – Application de Prédiction et d’Analyse Financière
+📊 Application Dash – Analyse et Prédiction de Souscription à une Offre Bancaire
 
-Marketune est une plateforme complète d’analyse et de visualisation des données financières.  
-Le projet combine **une API Flask** (pour la prédiction et le traitement des données) et **une application Dash** (pour la visualisation et l’interaction utilisateur).  
-L’ensemble est conçu pour être **containerisé avec Docker** et facilement déployable sur le cloud.
+🏦 Contexte du projet
 
----
+Dans un contexte de campagnes marketing bancaires, il est stratégique pour une banque d’identifier à l’avance :
 
-## 📁 **Structure du projet**
+les clients susceptibles de souscrire à une nouvelle offre,
 
-APP_MARKETING/
-│
-├── api_flask/ # Contient l’API Flask
-│ ├── app.py # Fichier principal Flask
-│ ├── Dockerfile # Dockerfile de l’API Flask
-│ ├── requirements_api.txt # Dépendances de l’API Flask
-│ └── ...
-│
-├── pages/ # Pages de l'application Dash
-│ ├── home.py
-│ ├── dashboard.py
-│ └── ...
-│
-├── index.py # Fichier principal Dash
-├── Dockerfile # Dockerfile pour l’application Dash
-├── requirements_dash.txt # Dépendances Dash
-├── docker-compose.yml # Orchestration API + Dash
-└── README.md # Ce fichier
+et ceux qui ne vont probablement pas souscrire.
 
----
+Ce projet repose sur le jeu de données d’une banque portugaise, largement utilisé dans les études de marketing bancaire, et vise à aider la banque à optimiser ses futures campagnes en ciblant efficacement les bons profils clients.
 
-## ⚙️ **Installation locale (sans Docker)**
+🎯 Objectifs de l’application
 
-### 1️⃣ Créer un environnement virtuel
-```bash
-py -3.13 -m venv venv
-venv\Scripts\activate
-pip install -r requirements_dash.txt
-cd api_flask
-pip install -r requirements_api.txt
-cd api_flask
-python app.py
+L’application a pour objectif principal :
 
-cd ..
-python index.py
+d’analyser les caractéristiques des clients afin de comprendre les différences entre :
 
-🐳 Déploiement avec Docker
-1️⃣ Construire les images
+les clients qui souscrivent à l’offre,
 
-Depuis la racine du projet :
-docker-compose build
-docker-compose up
+et ceux qui ne souscrivent pas ;
 
-2️⃣ Lancer les conteneurs
-docker-compose up
+de prédire la probabilité de souscription lors d’une prochaine campagne marketing ;
 
-✅ Dash sera accessible sur :
-👉 http://localhost:8050
+d’expliquer les décisions du modèle de Machine Learning afin de garantir la transparence et l’interprétabilité.
 
-✅ L’API Flask sur :
-👉 http://localhost:5000
+🧠 Approche méthodologique
 
-🧰 Fichiers Docker importants
-🔹 Dockerfile (Dash)
-FROM python:3.13-slim
-WORKDIR /app
-COPY requirements_dash.txt .
-RUN pip install --no-cache-dir -r requirements_dash.txt
-COPY . .
-CMD ["python", "index.py"]
+Le projet s’articule autour de trois axes majeurs :
 
-🔹 Dockerfile (API Flask)
-FROM python:3.13-slim
-WORKDIR /app
-COPY requirements_api.txt .
-RUN pip install --no-cache-dir -r requirements_api.txt
-COPY . .
-CMD ["python", "app.py"]
+1️⃣ Analyse exploratoire et descriptive
 
-🔹 docker-compose.yml
-version: '3'
-services:
-  api:
-    build: ./api_flask
-    ports:
-      - "5000:5000"
+Étude des variables socio-démographiques et comportementales
 
-  dash:
-    build: .
-    ports:
-      - "8050:8050"
-    depends_on:
-      - api
-🔒 Bonnes pratiques
+Comparaison des profils des clients souscripteurs vs non-souscripteurs
 
-Toujours utiliser un environnement virtuel avant installation locale.
+Visualisations interactives via Dash
 
-Vérifier la compatibilité des versions Python (3.11 ou 3.13).
+2️⃣ Statistique inférentielle
 
-Nettoyer les conteneurs avec :
-docker-compose down
-docker system prune -f
+Tests statistiques pour vérifier l’existence de différences significatives entre les deux groupes
 
-👨‍💻 Auteur
+Analyse de la dépendance entre les variables explicatives et la souscription
 
-Laurenzo Kabala
-Projet académique et professionnel de Data Science
-📧 Contact disponible sur demande
+3️⃣ Machine Learning et interprétabilité
 
-📄 Licence
+Modélisation avec XGBoost
 
-Projet distribué sous licence MIT.
+Estimation de la probabilité de souscription
 
----
+Interprétation des prédictions à l’aide de SHAP pour expliquer :
 
+les variables les plus influentes,
 
+le raisonnement du modèle pour chaque client.
 
+2️⃣ Statistique inférentielle
+
+Tests statistiques pour vérifier l’existence de différences significatives entre les deux groupes
+
+Analyse de la dépendance entre les variables explicatives et la souscription
+
+3️⃣ Machine Learning et interprétabilité
+
+Modélisation avec XGBoost
+
+Estimation de la probabilité de souscription
+
+Interprétation des prédictions à l’aide de SHAP pour expliquer :
+
+les variables les plus influentes,
+
+le raisonnement du modèle pour chaque client. 
+
+🧩 Architecture de l’application
+
+L’application suit une architecture modulaire et professionnelle, orientée production.
+
+🔐 Authentification
+
+Page Login
+
+Accès réservé aux utilisateurs authentifiés
+
+En cas d’absence de compte, l’utilisateur doit contacter l’administrateur
+
+Gestion des rôles (utilisateur / administrateur)
+
+🏠 Pages principales
+
+Page Accueil
+
+Présentation générale de l’application
+
+Page Analyse
+
+Analyse des données et statistiques
+
+Page Prédiction (Machine Learning)
+
+Prédictions et explications SHAP
+
+Page Gestion (Administrateur uniquement)
+
+Gestion des accès et des utilisateurs
+
+🏗️ Architecture technique
+🔧 Technologies utilisées
+
+Langage : Python
+
+Frontend : Dash
+
+Backend (API ML) : Flask
+
+Modèle de Machine Learning : XGBoost
+
+Interprétabilité : SHAP
+
+Visualisation : Plotly, Matplotlib
+
+Déploiement : Render (API Flask & Dash)
+
+🔄 Séparation des responsabilités
+
+Application Dash
+
+Interfaces utilisateurs
+
+Visualisation
+
+Interaction avec l’API
+
+API Flask
+
+Chargement du modèle XGBoost
+
+Prédictions
+
+Calcul des explications SHAP
+
+Cette séparation garantit :
+
+une meilleure scalabilité,
+
+une maintenance simplifiée,
+
+une architecture conforme aux bonnes pratiques MLOps.
+
+🚀 Valeur ajoutée pour la banque
+
+Meilleure ciblage des campagnes marketing
+
+Réduction des coûts liés aux campagnes inefficaces
+
+Décisions basées sur les données et les probabilités
+
+Transparence grâce à l’interprétabilité des modèles
+
+📌 Conclusion
+
+Cette application constitue un outil décisionnel complet, combinant :
+
+analyse statistique,
+
+machine learning avancé,
+
+interprétabilité des modèles,
+
+et interfaces interactives professionnelles.
+
+Elle permet à la banque d’anticiper le comportement de ses clients et d’améliorer significativement la performance de ses campagnes marketing futures.
+.
+├── index.py               # Point d'entrée principal (Gestion du routage)
+├── app.py                 # Initialisation de l'application Dash
+├── supabase_db.py         # Intégration et requêtes vers Supabase
+├── transformation.py      # Scripts de nettoyage et processing
+├── requirements.txt       # Dépendances de l'application
+├── api_flask/             # Backend de service ML
+│   ├── api.py             # API Flask servant le modèle XGBoost
+│   └── requirement.txt    # Dépendances spécifiques à l'API
+├── pages/                 # Modules de contenu
+│   ├── login.py           # Authentification sécurisée
+│   ├── home.py            # Page d'accueil
+│   ├── analyse.py         # Analyse statistique et inférentielle
+│   └── prediction.py      # Interface de prédiction (XGBoost + SHAP)
+├── component/             # Éléments d'interface réutilisables
+│   └── sidebar.py         # Menu latéral de navigation
+├── utils/                 # Fonctions utilitaires
+│   ├── theme.py           # Configuration visuelle et CSS-in-JS
+│   └── traitement.py      # Fonctions de traitement transverses
+├── dataset/               # Répertoire des données sources
+├── assets/                # Logos, CSS personnalisés et images
+└── email_config           # Configuration des services d'emailing
