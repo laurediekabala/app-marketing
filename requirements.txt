@@ -8,3 +8,4 @@ flask_login
 requests
 supabase
 python-dotenv
+gunicorn
