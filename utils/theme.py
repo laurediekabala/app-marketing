@@ -12,7 +12,7 @@ CONTENT_STYLE = {
 
 # Style pour la sidebar
 SIDEBAR_STYLE = {
-    "position": "relative",
+    "position": "fixed",
     "top": 0,
     "left": 0,
     "bottom": 0,
