@@ -1,15 +1,99 @@
-/* assets/styles.css */
+/* ════════════════════════════════════════════════ */
+/* 🎨 STYLES DE BASE                               */
+/* ════════════════════════════════════════════════ */
 
-/* Style de base pour une police professionnelle */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 }
 
-/* Amélioration des liens de navigation dans la sidebar */
+/* ════════════════════════════════════════════════ */
+/* 🏗️ APP CONTAINER                                */
+/* ════════════════════════════════════════════════ */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 📄 CONTENU PRINCIPAL                            */
+/* ════════════════════════════════════════════════ */
+
+.content-container {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.content-area {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.page-header {
+    padding: 0;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    background: transparent;
+}
+
+.user-greeting {
+    font-size: 0.9rem;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 🔐 PAGE LOGIN                                   */
+/* ════════════════════════════════════════════════ */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 🗂️ SIDEBAR — DESKTOP                           */
+/* ════════════════════════════════════════════════ */
+
+#sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.flex-grow-1 {
+    flex: 1 !important;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
 .nav-pills .nav-link {
     transition: all 0.2s ease-in-out;
     border-radius: 0.5rem;
@@ -17,7 +101,8 @@ body {
     margin-bottom: 0.25rem;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
     background-color: #0d6efd !important;
     color: white !important;
     transform: translateX(4px);
@@ -28,43 +113,220 @@ body {
     transform: translateX(2px);
 }
 
-/* Style pour le switch de thème */
-.form-switch .form-check-input {
+.nav-link-custom {
+    border-radius: 8px;
+    padding: 10px 15px !important;
+    transition: all 0.2s ease !important;
+}
+
+.nav-link-custom:hover {
+    background: rgba(13, 110, 253, 0.1);
+}
+
+.user-info-card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn {
+    border-radius: 8px;
+    transition: all 0.2s ease !important;
+}
+
+.logout-btn:hover {
+    background: #dc3545 !important;
+    color: white !important;
+    border-color: #dc3545 !important;
+}
+
+/* ════════════════════════════════════════════════ */
+/* ☰ HAMBURGER BUTTON                              */
+/* ════════════════════════════════════════════════ */
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.35);
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease !important;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Flexbox pour la sidebar */
-#sidebar {
-    display: flex !important;
-    flex-direction: column !important;
+.sidebar-toggle:hover,
+.sidebar-toggle:active {
+    background: #0b5ed7;
+    transform: scale(1.05);
 }
 
-/* Assurer que la zone de navigation prend l'espace disponible */
-.flex-grow-1 {
-    flex: 1 !important;
+/* ════════════════════════════════════════════════ */
+/* ✕ CLOSE BUTTON                                  */
+/* ════════════════════════════════════════════════ */
+
+.sidebar-close {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1200;
+    background: transparent;
+    color: #6c757d;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease !important;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Assurer que les éléments du bas restent en bas */
-.mt-auto {
-    margin-top: auto !important;
+.sidebar-close:hover,
+.sidebar-close:active {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
 }
 
-/* Style pour les cartes */
+/* ════════════════════════════════════════════════ */
+/* 🔲 OVERLAY                                      */
+/* ════════════════════════════════════════════════ */
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sidebar-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 🃏 CARDS                                        */
+/* ════════════════════════════════════════════════ */
+
 .card {
     border-radius: 0.75rem;
     border: none;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease !important;
 }
 
-/* Transitions fluides pour tous les éléments */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* Scrollbar personnalisée */
+/* ════════════════════════════════════════════════ */
+/* 📊 BOUTONS ANALYSE                              */
+/* ════════════════════════════════════════════════ */
+
+.analysis-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.analysis-buttons .btn {
+    flex: 1 1 auto;
+    min-width: 140px;
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 📋 TABLES                                       */
+/* ════════════════════════════════════════════════ */
+
+.users-table-wrapper,
+.table-responsive-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.users-table-wrapper .dash-table-container {
+    overflow-x: auto !important;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 📈 GRAPHIQUES                                   */
+/* ════════════════════════════════════════════════ */
+
+.graph-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.graph-container .js-plotly-plot,
+.graph-container .plotly {
+    width: 100% !important;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 📐 TEST STAT & KPI                             */
+/* ════════════════════════════════════════════════ */
+
+.test-stat-result {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.kpi-card {
+    margin-bottom: 1rem;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 🎨 THÈME                                        */
+/* ════════════════════════════════════════════════ */
+
+.form-switch .form-check-input {
+    cursor: pointer;
+}
+
+.form-switch .form-check-input:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+#sidebar, #page-content {
+    transition: background-color 0.3s ease !important;
+}
+
+.theme-switching * {
+    transition: none !important;
+}
+
+/* ════════════════════════════════════════════════ */
+/* 📜 SCROLLBAR                                    */
+/* ════════════════════════════════════════════════ */
+
 ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -79,21 +341,479 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
-/* Ajoutez à la fin de styles.css : */
 
-/* Styles pour assurer la stabilité du thème */
-#sidebar, #page-content {
-    transition: background-color 0.3s ease !important;
+
+/* ════════════════════════════════════════════════════════ */
+/* 📱 TABLETTE — max 992px                                */
+/* ════════════════════════════════════════════════════════ */
+@media (max-width: 992px) {
+    .sidebar-container {
+        width: 16rem !important;
+    }
+
+    .content-container {
+        margin-left: 16rem !important;
+    }
+
+    .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-flex .display-6 {
+        font-size: 1.5rem !important;
+    }
 }
 
-/* Éviter les clignotements */
-.theme-switching * {
-    transition: none !important;
+
+/* ════════════════════════════════════════════════════════ */
+/* 📱 MOBILE — max 768px                                  */
+/* ════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* --- Layout --- */
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* --- Hamburger visible --- */
+    .sidebar-toggle {
+        display: flex !important;
+    }
+
+    /* --- Close visible --- */
+    .sidebar-close {
+        display: flex !important;
+    }
+
+    /* --- Sidebar cachée --- */
+    .sidebar-container {
+        width: 280px !important;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 1050 !important;
+        box-shadow: none;
+    }
+
+    /* --- Sidebar ouverte --- */
+    .sidebar-container.sidebar-open {
+        transform: translateX(0) !important;
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* --- Contenu pleine largeur --- */
+    .content-container {
+        margin-left: 0 !important;
+        padding: 1rem 0.75rem !important;
+        padding-top: 70px !important;
+        width: 100% !important;
+    }
+
+    /* --- Header --- */
+    .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .header-flex .display-6 {
+        font-size: 1.3rem !important;
+    }
+
+    .user-greeting {
+        font-size: 0.8rem;
+    }
+
+    .breadcrumb {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* --- Login --- */
+    .login-container {
+        padding: 0.5rem;
+    }
+
+    .login-container .card {
+        margin: 0 !important;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    /* --- Alerts --- */
+    .alert {
+        font-size: 0.9rem;
+    }
+
+    .alert h4 {
+        font-size: 1.1rem;
+    }
+
+    /* --- Spacing --- */
+    .row {
+        --bs-gutter-x: 0.75rem;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* --- Cards --- */
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    /* --- Tables --- */
+    .dash-table-container {
+        overflow-x: auto !important;
+    }
+
+    .dash-cell {
+        font-size: 12px !important;
+        padding: 6px 4px !important;
+    }
+
+    .dash-header {
+        font-size: 12px !important;
+        padding: 6px 4px !important;
+    }
+
+    /* --- Graphiques --- */
+    .js-plotly-plot,
+    .js-plotly-plot .plotly {
+        width: 100% !important;
+    }
+
+    /* --- Modals --- */
+    .modal-responsive .modal-dialog {
+        margin: 0.5rem !important;
+        max-width: calc(100vw - 1rem) !important;
+        width: calc(100vw - 1rem) !important;
+    }
+
+    .modal-responsive .modal-body {
+        padding: 0.75rem !important;
+    }
+
+    .modal-responsive .modal-header {
+        padding: 0.75rem !important;
+    }
+
+    .modal-responsive .modal-title {
+        font-size: 1rem !important;
+    }
+
+    /* --- Boutons analyse --- */
+    .analysis-buttons {
+        flex-direction: column;
+    }
+
+    .analysis-buttons .btn {
+        width: 100%;
+        min-width: unset;
+        font-size: 0.82rem;
+        padding: 10px 12px;
+        text-align: left;
+    }
+
+    /* --- Gestion users --- */
+    .form-card,
+    .table-card {
+        margin-bottom: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+
+    .role-action-row > div {
+        margin-bottom: 8px;
+    }
+
+    /* --- Tabs --- */
+    .nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.82rem;
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+    }
+
+    /* --- Nav pills mobile --- */
+    .nav-pills .nav-link.active {
+        transform: none;
+    }
+
+    .nav-pills .nav-link:hover {
+        transform: none;
+    }
 }
 
-/* Style pour le switch de thème */
-.form-switch .form-check-input:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+
+/* ════════════════════════════════════════════════════════ */
+/* 📱 PETIT MOBILE — max 480px                            */
+/* ════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+    .sidebar-container {
+        width: 85vw !important;
+        max-width: 300px;
+    }
+
+    .content-container {
+        padding: 0.5rem !important;
+        padding-top: 65px !important;
+    }
+
+    /* --- Titres --- */
+    h1 { font-size: 1.4rem !important; }
+    h2 { font-size: 1.2rem !important; }
+    h3 { font-size: 1.05rem !important; }
+    h4 { font-size: 0.95rem !important; }
+
+    .header-flex .display-6 {
+        font-size: 1.1rem !important;
+    }
+
+    .user-greeting {
+        font-size: 0.7rem;
+    }
+
+    .breadcrumb {
+        font-size: 0.7rem;
+    }
+
+    /* --- Boutons --- */
+    .btn {
+        font-size: 0.82rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* --- Inputs (empêche zoom iOS/Android) --- */
+    input,
+    select,
+    textarea,
+    .Select-input input,
+    .dash-dropdown .Select-input input {
+        font-size: 16px !important;
+        min-height: 44px;
+    }
+
+    /* --- Dropdown Dash --- */
+    .dash-dropdown {
+        font-size: 14px;
+    }
+
+    .Select-menu-outer {
+        font-size: 14px;
+    }
+
+    /* --- Cards --- */
+    .card-body {
+        padding: 0.75rem !important;
+    }
+
+    .card-header {
+        padding: 0.6rem 0.75rem !important;
+    }
+
+    /* --- Tables --- */
+    .dash-cell {
+        font-size: 11px !important;
+        padding: 4px 3px !important;
+    }
+
+    .table {
+        font-size: 0.78rem;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.35rem;
+    }
+
+    /* --- KPI --- */
+    .kpi-card .card-text.fs-1 {
+        font-size: 1.8rem !important;
+    }
+
+    .kpi-card .card-title {
+        font-size: 0.9rem !important;
+    }
+
+    /* --- Test stat --- */
+    .test-stat-result {
+        padding: 0.6rem;
+        font-size: 0.78rem;
+    }
+
+    /* --- Modals --- */
+    .modal-responsive .modal-dialog {
+        margin: 0.25rem !important;
+        max-width: calc(100vw - 0.5rem) !important;
+    }
+
+    /* --- Login --- */
+    .login-container .card {
+        border-radius: 10px;
+    }
+
+    .login-container .card-body {
+        padding: 1rem !important;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════ */
+/* 📱 TRÈS PETIT MOBILE — max 360px                       */
+/* ════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+
+    .sidebar-container {
+        width: 90vw !important;
+    }
+
+    .sidebar-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        top: 8px;
+        left: 8px;
+    }
+
+    .content-container {
+        padding: 0.35rem !important;
+        padding-top: 58px !important;
+    }
+
+    h1 { font-size: 1.2rem !important; }
+    h2 { font-size: 1.1rem !important; }
+
+    .header-flex .display-6 {
+        font-size: 1rem !important;
+    }
+
+    .btn {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    .analysis-buttons .btn {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════ */
+/* 🖥️ GRAND ÉCRAN — min 1400px                            */
+/* ════════════════════════════════════════════════════════ */
+@media (min-width: 1400px) {
+    .content-container {
+        padding: 2rem 2.5rem !important;
+    }
+
+    .header-flex .display-6 {
+        font-size: 2rem !important;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════ */
+/* 🔄 ORIENTATIONS                                        */
+/* ════════════════════════════════════════════════════════ */
+
+/* Paysage mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar-container {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .sidebar-container .mb-3 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .sidebar-container .my-3 {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .sidebar-container h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .content-container {
+        padding-top: 55px !important;
+    }
+
+    .login-container {
+        padding: 0.25rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════ */
+/* ♿ ACCESSIBILITÉ                                       */
+/* ════════════════════════════════════════════════════════ */
+
+/* Focus visible pour navigation clavier */
+*:focus-visible {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Touch targets minimum 44px */
+@media (pointer: coarse) {
+    .nav-link-custom {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    .form-check-input {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .form-check-label {
+        padding-left: 0.25rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════ */
+/* 🎬 ANIMATIONS                                          */
+/* ════════════════════════════════════════════════════════ */
+
+/* Respecter les préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .sidebar-container {
+        transition: none !important;
+    }
 }
